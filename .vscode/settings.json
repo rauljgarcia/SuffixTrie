@@ -10,6 +10,8 @@
         "__node_handle": "cpp",
         "iostream": "cpp",
         "vector": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "bitset": "cpp",
+        "locale": "cpp"
     }
 }
