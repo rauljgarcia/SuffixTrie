@@ -54,15 +54,14 @@ bool SufTrie::searchPre(string pre){
     if(root == nullptr){
         return false;
         }
-
     shared_ptr<sufTrie>curr = root;
-    for(int i = 0; i<pre.size(); i++){
-        char ch = pre.at(i);
-        shared_ptr<sufTrie> node = curr->children[(ch)];
-        if(node == nullptr){
+
+    for(auto it : pre){
+        if(!curr->children[it]){
             return false;
+        } else {
+            curr = curr->children[it];
         }
-        curr = node;
     }
     return true;
 }
