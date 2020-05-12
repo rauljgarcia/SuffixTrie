@@ -1,6 +1,6 @@
 # Suffix Trie
 This is an implemenation of a suffix trie, in C++.
-Will use toward next step of implementing a suffix tree. 
+Will use toward next step of implementing a compressed suffix trie. 
 
 The project has following folder tree
 
