@@ -29,6 +29,14 @@ class SufTrie {
     //builds trie of suffixes of txt
     void suffixTrie(string txt);
 
+    //iterative search for a substring in the trie
+    //substring is full path from root to leaf
+    bool searchSub(string substr);
+
+    //interative search for a prefix in the trie
+    //prefix starts at root but doesn't nec end in a leaf
+    bool searchPre(string pre);
+
 
 
 

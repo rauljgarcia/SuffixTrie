@@ -24,10 +24,47 @@ void SufTrie::suffixTrie(string txt){
             curr->children[part[j]] = CreateNode();
                 }
             curr = (curr->children[part[j]]);
-            }
         }
     }
+}
 
 
+bool SufTrie::searchSub(string substr){
+    if(root == nullptr){
+        return false;
+    }
+    shared_ptr<sufTrie>curr = root;
+    
+    for(auto it : substr){
+        if(!curr->children[it]){
+            return false;
+        } else {
+            curr = curr->children[it];
+        }
+    }
+    
+    if("$"){
+        return true;
+        } else {
+            return false;
+            }
+}
+
+bool SufTrie::searchPre(string pre){
+    if(root == nullptr){
+        return false;
+        }
+
+    shared_ptr<sufTrie>curr = root;
+    for(int i = 0; i<pre.size(); i++){
+        char ch = pre.at(i);
+        shared_ptr<sufTrie> node = curr->children[(ch)];
+        if(node == nullptr){
+            return false;
+        }
+        curr = node;
+    }
+    return true;
+}
 
 
