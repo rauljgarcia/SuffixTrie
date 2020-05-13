@@ -1,4 +1,4 @@
-// #include <gtest/gtest.h>
+#include <gtest/gtest.h>
 #include "../code/SufTrie.h"
 
 #include <iostream>
@@ -6,24 +6,53 @@
 
 using namespace std;
 
-// class test_Trie : public ::testing::Test {
-// protected:
+class test_SufTrie : public ::testing::Test {
+protected:
 // 	// This function runs only once before any TEST_F function
-// 	static void SetUpTestCase(){
-// 	}
+	static void SetUpTestCase(){
+	}
 
 // 	// This function runs after all TEST_F functions have been executed
-// 	static void TearDownTestCase(){
-// 	}
+	static void TearDownTestCase(){
+	}
     
 // 	// this function runs before every TEST_F function
-// 	void SetUp() override {
-//     }
+	void SetUp() override {
+    }
 
 // 	// this function runs after every TEST_F function
-// 	void TearDown() override {
-// 	}
-// };
+	void TearDown() override {
+	}
+};
+
+TEST_F(test_SufTrie, TestInitialization){
+    SufTrie myTri;
+	shared_ptr<sufTrie> root= myTri.CreateNode();
+	ASSERT_TRUE(root); // expect root to have pointer
+}
+
+TEST_F(test_SufTrie, TestBuildSufTrie){
+    SufTrie myTri;
+	shared_ptr<sufTrie> root= myTri.CreateNode();
+    vector<string> str;
+	
+	str.insert(str.end(),{"aabba", "abaaabb", "aababba"});
+    for(int i = 0; i<str.size(); i++){
+		myTri.suffixTrie(str[i]);
+	}
+	myTri.nodeEmpty(root);
+	ASSERT_FALSE(myTri.nodeEmpty(root));//indicates root has children	
+
+	ASSERT_TRUE(myTri.searchSub(str[0]));
+	ASSERT_TRUE(myTri.searchSub(str[1]));
+	ASSERT_TRUE(myTri.searchSub(str[2]));
+
+	string str1 = "cceaab";
+	ASSERT_FALSE(myTri.searchSub(str1));//expected not in trie
+	string str2 = "cceaab";
+	myTri.suffixTrie(str2);
+	ASSERT_TRUE(myTri.searchSub(str2));//expected to in trie, after insert
+}
 
 // TEST_F(test_SufTrie, TestName){
 //     Class obj;

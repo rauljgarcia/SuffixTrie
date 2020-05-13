@@ -37,10 +37,11 @@ class SufTrie {
     //prefix starts at root but doesn't nec end in a leaf
     bool searchPre(string pre);
 
+    bool nodeEmpty(shared_ptr<sufTrie>& curr);
 
+    bool delStrHelper(string& txt, shared_ptr<sufTrie>& root);
 
-
-    
+    bool delString(string& txt);
 
 };
 

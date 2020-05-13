@@ -66,4 +66,12 @@ bool SufTrie::searchPre(string pre){
     return true;
 }
 
+bool SufTrie::nodeEmpty(shared_ptr<sufTrie>& curr){
+    for(auto it: curr->children){
+    if(it.second == nullptr){
+        return true;
+        } 
+    }
+    return false;
+}
 

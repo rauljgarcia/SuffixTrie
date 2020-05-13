@@ -12,6 +12,7 @@
         "vector": "cpp",
         "ostream": "cpp",
         "bitset": "cpp",
-        "locale": "cpp"
+        "locale": "cpp",
+        "filesystem": "cpp"
     }
 }
