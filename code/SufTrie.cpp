@@ -75,3 +75,35 @@ bool SufTrie::nodeEmpty(shared_ptr<sufTrie>& curr){
     return false;
 }
 
+bool SufTrie::delStrHelper(string& txt, shared_ptr<sufTrie>& root){
+    if(root == nullptr){
+        return false;
+        }
+    
+    if(txt.size() == 0){
+        root->children[(txt[0])] = nullptr;
+        return true;
+        }
+
+    string part = txt.substr(1);
+    if(delStrHelper(part, root->children[ (txt[0]) ])){
+
+        if(nodeEmpty(root->children[(txt[0])])){
+            root->children[(txt[0])] = nullptr;
+            return true;
+            } else { 
+                return true;
+            }
+    } else {   
+        return false;
+        }
+    return false;
+}
+ 
+bool SufTrie::delString(string& txt){
+    if(delStrHelper(txt, root)){
+        return true;
+        } else {
+    return false;
+    }
+}
