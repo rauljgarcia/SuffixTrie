@@ -54,6 +54,28 @@ TEST_F(test_SufTrie, TestBuildSufTrie){
 	ASSERT_TRUE(myTri.searchSub(str2));//expected to in trie, after insert
 }
 
+TEST_F(test_SufTrie, TestDeleteWord){
+    SufTrie myTri;
+    shared_ptr<sufTrie> root= myTri.CreateNode();
+    vector<string> wordSet;
+	
+	wordSet.insert(wordSet.end(),{"Ford", "BMW", "Tesla", "Subaru"});
+    for(int i = 0; i<wordSet.size(); i++){
+		myTri.suffixTrie(wordSet[i]);
+	}
+	
+	string word1 = "BMW";
+	ASSERT_TRUE(myTri.searchSub(word1));//locates string in Trie, before deletion
+	myTri.delString(word1);
+	ASSERT_FALSE(myTri.searchSub(word1));//returns as removed from Trie, after deletion
+
+	string word2 = "Mercedes";
+	ASSERT_FALSE(myTri.delString(word2));//expect false, word doesn't exist in Trie	
+
+	string word3 = "Tesla";
+	ASSERT_TRUE(myTri.delString(word3));
+}
+
 // TEST_F(test_SufTrie, TestName){
 //     Class obj;
 	
